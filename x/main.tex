@@ -1,0 +1,28 @@
+\documentclass[
+    a4paper,
+    12pt,
+    openany,
+    oneside
+]{scrbook}
+\usepackage{fontspec,xltxtra,xunicode}
+\usepackage[slantfont,boldfont]{xeCJK}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{fancybox}
+\usepackage[most]{tcolorbox}
+\usepackage{graphicx}
+
+\setCJKfamilyfont{song}{SimSun}
+
+\input{lib/box}
+
+\begin{document}
+\input{lib/star}
+\pagestyle{plain}
+\pagenumbering{Roman}
+
+\include{contents/1}
+\include{contents/3}
+
+\end{document}

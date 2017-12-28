@@ -1,0 +1,30 @@
+\part{Python编程}
+前面做了好多准备工作，终于开始正题了$\cdots$
+在这份教程中，我们将介绍Python的基本语法，并围绕“小海龟画图”提供丰富的例子和练习。
+\chapter{库与函数调用：前进与转弯}
+在本章中，我们将学会控制小海龟前进、转弯，并画出一个正方形。
+\section{函数}
+\subsection{什么是函数}
+数学中有函数的概念，如二次函数$f(x) = x^2$将$x$映射到$x^2$。
+一个Python中的函数也可以实现类似功能，输入一个数，输出这个数的平方。
+Python函数也能完成数学中的函数做不到的功能，比如在显示器上画一个正方形。
+一般来说，实现某种特定功能、可以重复使用的一段代码就是一个函数
+\footnote{\url{https://www.tutorialspoint.com/python/python_functions.htm}}
+。在不同场合，函数也会被叫做其他名字，比如子程序、过程、方法等
+\footnote{\url{https://en.wikipedia.org/wiki/Subroutine}}
+。
+\subsection{什么是库}
+\begin{lstlisting}[style=PythonStyle1, caption=Snippet title]
+import turtle
+turtle.fd(50)
+turtle.rt(90)
+turtle.fd(50)
+turtle.rt(90)
+turtle.fd(50)
+turtle.rt(90)
+turtle.fd(50)
+turtle.rt(90)
+\end{lstlisting}
+\begin{paperbox}{\textbf{Learning By Thinking\starthree}}
+数学函数与Python中的函数有什么异同？
+\end{paperbox}

@@ -1,0 +1,109 @@
+\chapter{计算机如何工作}
+本章我们将对计算机如何工作有一个初步的认识。\\
+大体上来说，为了让一台比较现代的计算机运行，我们需要能完成以下功能的组件：\\
+\begin{itemize}
+\item[-]执行指令
+\item[-]存储指令、数据
+\item[-]知道下一条指令是什么
+\item[-]显示图像、声音
+\end{itemize}
+\section{CPU与内存}
+CPU和内存都是现代计算机中不可缺少的组成部分。\\
+一个典型的CPU有算术逻辑单元，寄存器和控制单元，算术逻辑单元（ALU）用来执行具体的指令，比如基本的数学计算（加减乘除等）、读写数据；
+“知道下一条指令是什么”由控制单元（Control unit）完成（CU还有其他功能），大多数时候指令是按照从前到后的顺序执行的，
+但有时候，我们会希望突然跳到某条指令上。
+寄存器（Register）用来存储，它们数量比较少，所以每个都有自己的名字，在x86中，它们叫$AX$，$BX$，$\cdots$在ARM中，它们叫$R0$，$R1$，$\cdots$
+\footnote{\url{https://en.wikipedia.org/wiki/List_of_CPU_architectures}}。
+不同厂商不同型号的CPU在设计和实现上差异较大。目前最常见的CPU架构是ARM和x86。
+\begin{paperbox}{\textbf{Learning By Reading}\starone}
+ARM是一种指令集架构（Instruction set architexture），大多数智能手机用的都是这种架构。
+ARM指令集是精简指令集（RISC），意思是ARM在设计上通过减少单条指令的工作量来减少单条指令执行的时间（CPI）
+\footnote{\url{https://en.wikipedia.org/wiki/Reduced_instruction_set_computer}}。
+浏览\href{http://infocenter.arm.com/help/topic/com.arm.doc.qrc0006ec/QRC0006_UAL16.pdf}{材料}，
+了解ARM指令集都可以做哪些事情。同时，也可以在维基百科中查询相应词条，了解更多关于ARM、RISC的信息。
+\end{paperbox}
+\begin{paperbox}{\textbf{Learning By Reading}\starone}
+x86是另一种指令集架构，大多数电脑用的是这种架构。
+阅读以下材料，了解x86指令集有哪些指令。\\
+% \url{https://en.wikipedia.org/wiki/X86_instruction_listings}\\
+% \url{https://zh.wikibooks.org/zh-cn/X86組合語言/基本指令集}
+\url{https://www.tutorialspoint.com/microprocessor/microprocessor_8086_instruction_sets.htm}
+\end{paperbox}
+\begin{paperbox}{\textbf{Learning By Reading}\startwo}
+阅读材料，了解ARM和x86之间的优劣比较。\\
+\href{http://ihyperwin.iteye.com/blog/1701132}{ARM与x86 CPU架构对比区别}\\
+\href{https://www.zhihu.com/question/19846434}{ARM、x86的比较}\\
+\href{https://hellolynn.hpd.io/2017/04/14/看arm如何搶走x86市場？英特爾被逆襲下的策略/}{ARM、x86之争}
+\href{http://www.cnblogs.com/croot/archive/2012/11/24/3235140.html}{ARM指令集和x86指令集的比较}
+\end{paperbox}
+内存是一种存储设备，用来存储数据和指令供CPU使用，完成人类大脑的“记忆”功能。
+比如要计算$5+6$，计算机要存储：\\
+\begin{itemize}
+\item[-]数据
+\begin{itemize}
+\item[-]数字5，存放在地址A
+\item[-]数字6，存放在地址B
+\end{itemize}
+\item[-]指令
+\begin{itemize}
+\item[-]指令“把地址A中存放的数字和地址B中存放的数字相加并存放在地址C中
+\footnote{这里只是举例，实际上需要用到更多的指令来完成这个任务。}
+\footnote{需要注意的是，计算出来的结果也需要存储在某个地方。人类
+用大脑进行计算的时候，其实也会存储（记住）这个结果，只是我们一般不去注意。}
+”
+\end{itemize}
+\end{itemize}
+数据以多种多样的形式存在，它们在存储器中存储的方式可能也不同。
+\begin{paperbox}{\textbf{Learning By Reading}\starone}
+阅读以下材料，了解\href{https://www.crucial.cn/support/faq/the-role-of-memory-in-the-computer}{内存有什么用}，
+\href{http://www.cppblog.com/prayer/archive/2009/08/17/93594.html}{内存中都有什么}。
+\end{paperbox}
+\begin{paperbox}{\textbf{Learning By Thinking}\startwo}
+查阅ARM、x86指令集以及助教，说一说$5+6$需要用到哪些指令，$1+\cdots+10$呢？
+\end{paperbox}
+衡量包括内存在内的存储器有两个重要的指标：速度和大小
+\footnote{\url{https://en.wikipedia.org/wiki/Memory_hierarchy}}
+。速度越快价格越高，大小越大价格也越高，这是显而易见的。
+出于价格的考虑，两者之间需要权衡。
+现代计算机中通常有不同速度的存储器，包括寄存器（Register）、高速缓存（Cache）、随机存取存储器（Random-access memory，RAM）。
+从前到后越来越慢、越来越大。
+\begin{paperbox}{\textbf{Learning By Reading}\starthree}
+阅读材料，了解\href{http://blog.csdn.net/hellojoy/article/details/54744231}{内存、cache和寄存器之间的关系及区别}
+\end{paperbox}
+当需要数据的时候，计算机会先去高速的存储器中寻找，找不到的时候再去低速的存储器中寻找，
+并把这部分数据载入到高速的存储器中。在很多情况下，一段数据被使用之后在未来短时间内会再次被使用，因此，
+这种方法通常能节省大量时间。而这种特性叫做“时间局部性（Temporal locality）”。
+除此之外，还有空间局部性（Spatial locality）等局部性原理（Principle of locality）保证代码高效运行。
+\begin{paperbox}{\textbf{Learning By Reading}\startwo}
+阅读材料，了解空间局部性、时间局部性：\\
+\url{http://blog.csdn.net/qq_33083519/article/details/55106860}\\
+\url{http://www.cnblogs.com/yanlingyin/archive/2012/02/11/2347116.html}\\
+分支局部性：\\
+\url{https://stackoverflow.com/questions/11227809/why-is-it-faster-to-process-a-sorted-array-than-an-unsorted-array/11227902#11227902}\\
+里面牵涉到具体的代码现在可能看不懂，但学习完之后请回头再来看这部分。
+\end{paperbox}
+\section{外部设备}
+外部设备（Peripheral）是用来进行输入输出的辅助设备
+\footnote{\url{https://en.wikipedia.org/wiki/Peripheral}}。
+输入指的是让计算机获取一些信息，输出指的是将计算机中存储的信息呈现出来。
+这里的“输入输出”可以是任何形式的输入输出，比如，鼠标、键盘、触摸板、麦克风都是输入设备，
+而显示器、音箱、打印机都是输出设备。\\
+% 计算机通过“中断（Interrupt）
+% \footnote{\url{https://en.wikipedia.org/wiki/Interrupt}}
+% ”的方式与外部设备交互。\\
+% 比如，一台x86计算机想要将显示器上的某个像素点改成蓝色。
+% 首先，计算机执行$INT 10H$
+\begin{paperbox}{\textbf{Learning By Reading}\starone}
+阅读以下材料，进一步了解外部设备如何工作：\\
+\href{https://www.zhihu.com/question/20722310}{计算机底层如何访问显卡}\\
+\href{https://www.zhihu.com/question/39846396}{计算机如何调用硬件}
+\end{paperbox}
+\section{编译与解释}
+高级语言需要转化为机器语言才能被执行，方式有两种，编译和解释，简单来说，它们的不同在转化的时间上，
+编译选择在程序运行之前转化，而解释转化一句执行一句。
+Python是解释型语言。
+\begin{paperbox}{\textbf{Learning By Reading}\starthree}
+阅读以下材料：\\
+\href{https://www.zhihu.com/question/21486706/answer/32975999}{编译和解释的一个形象的比喻}\\
+\href{http://alexyyek.github.io/2015/01/08/CompileAndInterpreter/}{更详细地介绍编译和解释}
+\end{paperbox}
