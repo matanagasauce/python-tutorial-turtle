@@ -1,6 +1,9 @@
 \part{Python编程}
 前面做了好多准备工作，终于开始正题了$\cdots$
-在这份教程中，我们将介绍Python的基本语法，并围绕“小海龟画图”提供丰富的例子和练习。
+在这份教程中，我们将介绍Python的基本语法，并围绕“小海龟画图”提供丰富的例子和练习。\\
+“小海龟画图”是一个兼有实用与趣味的模块（什么叫模块？教程中马上就会提到。），我们也提供了若干例子，
+读者可以先尝试运行这些例子，领略“小海龟画图”的神奇。\\
+相信，在学完本教程之后，你可以写出更有创意的作品。
 \chapter{库与函数调用：前进与转弯}
 在本章中，我们将学会控制小海龟前进、转弯，并画出一个正方形。
 \section{函数}
@@ -12,9 +15,30 @@ Python函数也能完成数学中的函数做不到的功能，比如在显示�
 \footnote{\url{https://www.tutorialspoint.com/python/python_functions.htm}}
 。在不同场合，函数也会被叫做其他名字，比如子程序、过程、方法等
 \footnote{\url{https://en.wikipedia.org/wiki/Subroutine}}
+。\\
+\subsection{一些名词解释}
+数学证明中经常有“设$f(x)=\cdots$”，这里的“设”在Python中叫做“\textbf{定义}”，即“定义一个函数”。
+函数的使用叫“\textbf{调用}”。\\
+刚才的例子$f(x) = x^2$是一个一元函数，这里的“元”在Python中叫做“\textbf{参数}”，即“函数$f(x)$带有一个参数”。
+函数也可以没有参数。
+\section{模块}
+\subsection{什么是模块}
+一个Python文件就是一个模块。一个模块通常包含一系列函数，让我们不必从零开始编写代码
+\footnote{\url{https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014318447437605e90206e261744c08630a836851f5183000}}
 。
-\subsection{什么是库}
-\begin{lstlisting}[style=PythonStyle1, caption=Snippet title]
+\subsection{在Python中使用模块和函数}
+模块需要有自己的名字。在Python中，用
+\begin{lstlisting}[style=PythonStyle1]
+	import xxx
+\end{lstlisting}
+告诉解释器我们要使用模块$xxx$，用
+\begin{lstlisting}[style=PythonStyle1]
+	xxx.f(1, 2)
+\end{lstlisting}
+来调用$xxx$模块中的函数$f$，两个参数分别是$1$和$2$。
+\begin{paperbox}{\textbf{Learning By Doing}\starfive}
+输入以下代码，保存成文件并运行，观看结果。
+\begin{lstlisting}[style=PythonStyle1, caption=Rectangle]
 import turtle
 turtle.fd(50)
 turtle.rt(90)
@@ -25,6 +49,18 @@ turtle.rt(90)
 turtle.fd(50)
 turtle.rt(90)
 \end{lstlisting}
+\end{paperbox}
+$turtle$便是本教程中作为核心介绍的模块，这个模块包含了许多控制小海龟画图的函数。
+比如$turtle.fd$让小海龟前进（$fd$是$forward$的缩写），带一个参数，表示前进的距离；
+$turtle.rt$让小海龟右转（$rt$是$right$的缩写），带一个参数，表示转动的角度。\\
+类似，$turtle.bk$和$turtle.lt$让小海龟后退、左转。
+\begin{paperbox}{\textbf{Learning By Doing}\starfive}
+让小海龟倒退着画一个正五边形。
+\end{paperbox}
 \begin{paperbox}{\textbf{Learning By Thinking\starthree}}
 数学函数与Python中的函数有什么异同？
 \end{paperbox}
+数学中的函数是一个映射，而计算机函数则不一定。
+甚至，计算机函数可以用来产生随机数，这样的函数显然不是数学函数。
+\section{关键字参数}
+
