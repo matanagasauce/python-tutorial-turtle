@@ -1,26 +1,37 @@
 \chapter{计算机如何工作}
-本章我们将对计算机如何工作有一个初步的认识。\\
-大体上来说，为了让一台比较现代的计算机运行，我们需要能完成以下功能的组件：\\
-\begin{itemize}
-\item[-]执行指令
-\item[-]存储指令、数据
-\item[-]知道下一条指令是什么
-\item[-]显示图像、声音
-\end{itemize}
-\section{CPU与内存}
-CPU和内存都是现代计算机中不可缺少的组成部分。\\
+在前一章中，我们了解到，计算机可以直接执行的指令叫机器语言。
+可以想象，这些指令是十分有限的。\\
+因此，要完成复杂的程序，需要将程序的功能分解为一条条简单指令。
+反过来讲，计算机能完成什么样的指令决定了程序的边界。\\
+不过，幸运的是，绝大部分计算机在\textbf{理论上}可以实现的功能都是一样的，它们都是“图灵机”。
+\footnote{\url{https://www.cnblogs.com/worldtraveler/archive/2013/08/26/3282077.html}}
+但是在效率等方面有区别。\\
+另一方面，要让程序运行起来，需要有地方来存储程序，以及程序中可能用到的一些数据。\\
+算盘经常被人们认为是古代的计算机。
+但与现代计算机不同的是，算盘实际上只是将计算中的一些中间结果用算珠的形式保存了下来，
+所以算盘实际上是一个存储设备。
+\section{CPU、存储设备}
+计算机中，CPU主要负责执行指令，存储设备则用来存储。\\
+\begin{paperbox}{\textbf{Learning By Reading}\starthree}
+CPU有哪些部分组成？\\
 一个典型的CPU有算术逻辑单元，寄存器和控制单元，算术逻辑单元（ALU）用来执行具体的指令，比如基本的数学计算（加减乘除等）、读写数据；
 “知道下一条指令是什么”由控制单元（Control unit）完成（CU还有其他功能），大多数时候指令是按照从前到后的顺序执行的，
 但有时候，我们会希望突然跳到某条指令上。
-寄存器（Register）用来存储，它们数量比较少，所以每个都有自己的名字，在x86中，它们叫$AX$，$BX$，$\cdots$在ARM中，它们叫$R0$，$R1$，$\cdots$
+寄存器（Register）是一种存储设备，它们数量比较少，所以每个都有自己的名字，在x86中，它们叫$AX$，$BX$，$\cdots$在ARM中，它们叫$R0$，$R1$，$\cdots$
 \footnote{\url{https://en.wikipedia.org/wiki/List_of_CPU_architectures}}。
+\end{paperbox}
+我们将通过实际的例子了解CPU的指令都能实现哪些功能。\\
 不同厂商不同型号的CPU在设计和实现上差异较大。目前最常见的CPU架构是ARM和x86。
+\begin{paperbox}{\textbf{Learning By Reading}\starthree}
+在看看ARM和x86之前，我们先来了解一种比较简单，因而在教学中经常使用的指令集MIPS。
+\footnote{\url{http://blog.csdn.net/frozenshore/article/details/44706299}}
+\end{paperbox}
 \begin{paperbox}{\textbf{Learning By Reading}\starone}
 ARM是一种指令集架构（Instruction set architexture），大多数智能手机用的都是这种架构。
 ARM指令集是精简指令集（RISC），意思是ARM在设计上通过减少单条指令的工作量来减少单条指令执行的时间（CPI）
 \footnote{\url{https://en.wikipedia.org/wiki/Reduced_instruction_set_computer}}。
 浏览\href{http://infocenter.arm.com/help/topic/com.arm.doc.qrc0006ec/QRC0006_UAL16.pdf}{材料}，
-了解ARM指令集都可以做哪些事情。同时，也可以在维基百科中查询相应词条，了解更多关于ARM、RISC的信息。
+了解ARM指令集都可以做哪些事情。同时，也可以在维基百科中查询相应词条，了解更多关于ARM、RISC的信息。\\
 \end{paperbox}
 \begin{paperbox}{\textbf{Learning By Reading}\starone}
 x86是另一种指令集架构，大多数电脑用的是这种架构。
@@ -36,23 +47,28 @@ x86是另一种指令集架构，大多数电脑用的是这种架构。
 \href{https://hellolynn.hpd.io/2017/04/14/看arm如何搶走x86市場？英特爾被逆襲下的策略/}{ARM、x86之争}
 \href{http://www.cnblogs.com/croot/archive/2012/11/24/3235140.html}{ARM指令集和x86指令集的比较}
 \end{paperbox}
-内存是一种存储设备，用来存储数据和指令供CPU使用，完成人类大脑的“记忆”功能。
+存储设备有很多种，从经常听到的“U盘”、“硬盘”、“内存”到相对较少听讲的“高速缓存”、“寄存器”，它们都是有不同使用场景的存储设备。
+\begin{paperbox}{\textbf{Learning By Reading}\starthree}
+了解不同存储设备。\url{http://blog.csdn.net/not_repeat/article/details/51570681}。
+\end{paperbox}
+内存是CPU可以直接寻址的存储空间，用来存储数据和指令供CPU使用，完成人类大脑的“记忆”功能。
 比如要计算$5+6$，计算机要存储：\\
 \begin{itemize}
 \item[-]数据
 \begin{itemize}
 \item[-]数字5，存放在地址A
 \item[-]数字6，存放在地址B
+\item[-]计算结果，数字11，存放在地址C
 \end{itemize}
 \item[-]指令
 \begin{itemize}
 \item[-]指令“把地址A中存放的数字和地址B中存放的数字相加并存放在地址C中
 \footnote{这里只是举例，实际上需要用到更多的指令来完成这个任务。}
-\footnote{需要注意的是，计算出来的结果也需要存储在某个地方。人类
-用大脑进行计算的时候，其实也会存储（记住）这个结果，只是我们一般不去注意。}
 ”
 \end{itemize}
 \end{itemize}
+需要注意的是，计算出来的结果也需要存储在某个地方。人类
+用大脑进行计算的时候，其实也会存储（记住）这个结果，只是我们一般不去注意。\\
 数据以多种多样的形式存在，它们在存储器中存储的方式可能也不同。
 \begin{paperbox}{\textbf{Learning By Reading}\starone}
 阅读以下材料，了解\href{https://www.crucial.cn/support/faq/the-role-of-memory-in-the-computer}{内存有什么用}，
@@ -66,15 +82,16 @@ x86是另一种指令集架构，大多数电脑用的是这种架构。
 。速度越快价格越高，大小越大价格也越高，这是显而易见的。
 出于价格的考虑，两者之间需要权衡。
 现代计算机中通常有不同速度的存储器，包括寄存器（Register）、高速缓存（Cache）、随机存取存储器（Random-access memory，RAM）。
-从前到后越来越慢、越来越大。
+从前到后越来越慢、越来越大。\\
+作为一个比方，草稿纸可以看作存储设备。同样，人脑也是。人脑速度快、容量小；草稿纸速度慢、容量大。
 \begin{paperbox}{\textbf{Learning By Reading}\starthree}
 阅读材料，了解\href{http://blog.csdn.net/hellojoy/article/details/54744231}{内存、cache和寄存器之间的关系及区别}
 \end{paperbox}
+\begin{paperbox}{\textbf{Learning By Reading}\startwo}
 当需要数据的时候，计算机会先去高速的存储器中寻找，找不到的时候再去低速的存储器中寻找，
 并把这部分数据载入到高速的存储器中。在很多情况下，一段数据被使用之后在未来短时间内会再次被使用，因此，
 这种方法通常能节省大量时间。而这种特性叫做“时间局部性（Temporal locality）”。
 除此之外，还有空间局部性（Spatial locality）等局部性原理（Principle of locality）保证代码高效运行。
-\begin{paperbox}{\textbf{Learning By Reading}\startwo}
 阅读材料，了解空间局部性、时间局部性：\\
 \url{http://blog.csdn.net/qq_33083519/article/details/55106860}\\
 \url{http://www.cnblogs.com/yanlingyin/archive/2012/02/11/2347116.html}\\
@@ -113,3 +130,7 @@ Python是解释型语言。
 抽象地去解释的话，这个问题其实很好理解。做一件事通常有很多种方法，
 同样地，不一样的两段代码可能实现的是同一个功能，但编译器/解释器只能选择其中一种，
 很多时候，被选择的不一定是最好的。
+\begin{paperbox}{\textbf{Learning By Reading}\starone}
+本章只是对计算机工作原理做了抽象、概略的介绍，对这方面知识更深入的了解有助于更好地编程，
+但同时也需要花费大量的时间和精力。进一步了解可参见\url{https://zhuanlan.zhihu.com/xiao-jing-mo/19959253}。
+\end{paperbox}
