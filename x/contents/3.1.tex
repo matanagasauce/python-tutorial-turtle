@@ -1,0 +1,111 @@
+\chapter{类、方法、调用：前进与转弯}
+Python是一门面向对象语言，在Python中有“一切皆对象”的说法。\\
+在本章中，我们将学会创造一个小海龟对象，并控制它前进、转弯，画出一个正方形。
+\section{模块}
+\subsection{什么是模块}
+之前的章节里面我们看到计算机可以直接执行的指令比较有限，我们编程的时候显然不可能每次都从头开始。
+一个Python文件就是一个模块。
+\footnote{\url{https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014318447437605e90206e261744c08630a836851f5183000}}
+模块中有一些预先写好的代码，让我们可以方便的使用。\\
+\subsection{在Python中使用模块}
+模块需要有自己的名字。在Python中，用
+\begin{lstlisting}[style=PythonStyle1]
+	import xxx
+\end{lstlisting}
+告诉解释器我们要使用模块$xxx$
+\section{对象}
+\subsection{什么是对象}
+对象（Object）是来源于现实世界中“对象”的概念。
+\begin{paperbox}{\textbf{Learning By Doing}\starfive}
+阅读\href{http://blog.csdn.net/linyixiao88/article/details/50833502}{材料}的前几段（出现代码之前的段落），
+了解对象、类、属性、方法。
+\end{paperbox}
+以小海龟画图为例，小海龟便是对象。小海龟的颜色、形状、爬行速度等是它的属性。
+小海龟的方法有前进、转弯等等。\\
+在编程的过程中，我们可以把自己想象成这个虚拟世界的神明，我们要创造出小海龟们，
+并给它们下达指令。\\
+\subsection{如何创造对象}
+\begin{paperbox}{\textbf{Learning By Doing}\starfive}
+运行以下代码，观察结果。
+\begin{lstlisting}[style=PythonStyle1, caption=Rectangle]
+import turtle
+t1 = turtle.Turtle()
+t2 = turtle.Turtle()
+\end{lstlisting}
+\end{paperbox}
+以上代码中，$import turtle$告诉解释器我们需要使用小海龟画图的模块，
+$t1 = turtle.Turtle()$创建了一个$Turtle$（小海龟）对象，名字是$t1$。
+$t2 = turtle.Turtle()$创建了一个$Turtle$对象，名字是$t2$。
+可以看到在屏幕正中央出现了一只三角形，不要怀疑，那就是我们的小海龟。\\
+为什么创建了两只却只看到了一只？因为重合在一起了，下一节我们将移动小海龟，这样就能看见它们了。
+\section{方法、函数}
+\subsection{什么是方法}
+方法（Method）是实现某种特定功能、可以重复使用的一段代码
+\footnote{\url{https://www.tutorialspoint.com/python/python_functions.htm}}
+。在不同场合，这样的一段代码也会被叫做其他名字，比如子程序、过程、函数等
+\footnote{\url{https://en.wikipedia.org/wiki/Subroutine}}
+。这段代码出现在一个类中，通常叫\textbf{方法}。
+如果是不依赖一个类的“方法”，一般叫\textbf{函数}。\\
+数学中有函数的概念，如二次函数$f(x) = x^2$将$x$映射到$x^2$。
+一个Python中的方法也可以实现类似功能，比如一个正方形对象，求面积是它的一个方法。（相应地，面积可以是它的一个属性。）
+Python中的方法也能完成数学中的函数做不到的功能，比如对于小海龟对象，画一个正方形也是它的一个方法。\\
+刚才的例子$f(x) = x^2$是一个一元函数，这里的“元”在Python中叫做“\textbf{参数}”，即“$f(x)$带有一个参数”。
+方法也可以没有参数。\\
+\begin{paperbox}{\textbf{Learning By Doing}\starfive}
+运行以下代码，观察结果。
+\begin{lstlisting}[style=PythonStyle1, caption=Rectangle]
+import turtle
+t1 = turtle.Turtle('turtle')
+t2 = turtle.Turtle('turtle')
+t1.lt(90)
+t1.fd(50)
+\end{lstlisting}
+\end{paperbox}
+可以看到，屏幕上一只小海龟动了起来，而另一只小海龟停留在原地。\\
+并且，通过在创建对象的时候带上参数`turtle'，我们让小海龟真的变成了海龟的形状。\\
+$t1.fd$让小海龟$t1$前进（$fd$是$forward$的缩写），这个方法带一个参数，表示前进的距离；
+$t1.lt$让小海龟$t1$右转（$lt$是$left$的缩写），带一个参数，表示转动的角度。\\
+类似，$t1.bk$和$t1.rt$让小海龟后退、左转。
+\begin{paperbox}{\textbf{Learning By Doing}\starfive}
+让小海龟$t2$画一个正五边形。
+\end{paperbox}
+\begin{paperbox}{\textbf{Learning By Thinking\starthree}}
+数学函数与Python中的函数有什么异同？
+\end{paperbox}
+数学中的函数是一个映射，计算机函数的概念从数学函数中产生，可以看作是从参数定义域到代码的映射。
+然而，在编程中相比于函数的代码，我们更关心这段代码的运行结果。从参数的定义域到运行结果却并不一定是一个映射。
+比如，计算机函数可以用来产生随机数，这显然不是数学函数。
+\section{Python：一切皆对象}
+刚才的代码里，总共出现了多少对象？\\
+两个小海龟…除此之外呢？\\
+Python是一门面向对象语言，并且有说法号称“一切皆对象”。
+一个模块$turtle$也是对象，一个类$turtle.Turtle$也是对象，
+一个方法$t1.lt$也是对象，一个数字$50$也是对象。\\
+\section{一些有用的工具}
+Python有一些“内建函数”，指的是不需要任何模块就可以使用的函数。
+我们先行介绍几个很有用的内建函数。\\
+$print$，它可以在控制台打印（输出）信息。\\
+比如一个对象的某属性，我们希望知道这个属性的值，就可以用$print$打印出来。\\
+$type$函数返回一个对象的类型，即这个对象“属于”哪个类。
+$help$函数输出（即$print$）一个对象的所有方法、属性，以及对应的文档
+（文档一般是开发者写的，不写文档是被允许的，所以也可能没有）。用$help$可以对
+这个对象的用法有一定程度的了解。\\
+如果在一行后面加上警号$#$，Python解释器便不会去解释这一行警号后面的内容。
+警号后面的内容叫做注释，一般用来在代码中做注解。
+\begin{paperbox}{\textbf{Learning By Doing}\starfive}
+运行以下代码，观察结果。
+\begin{lstlisting}[style=PythonStyle1, caption=Rectangle]
+import turtle
+t1 = turtle.Turtle() # 创建一个小海龟对象
+print(type(turtle)) # 输出模块turtle的类型
+print(type(t1))
+print(type(t1.fd))
+print(type(50))
+print(type(print))
+
+print(turtle.__file__)
+print(turtle.__doc__)
+
+help(t1)
+\end{lstlisting}
+\end{paperbox}

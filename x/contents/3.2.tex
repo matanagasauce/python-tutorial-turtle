@@ -1,0 +1,58 @@
+\chapter{运算符、while循环：多边形}
+\subsection{数}
+如前所述，Python中的数字也是对象。
+一个数的方法有加、减、乘、除等等。\\
+如果我们要画一个正五边形，我们需要知道正五边形
+的每个角多少度。一个方法是预先算好，
+另一个方法是让Python帮我们算。
+\begin{paperbox}{\textbf{Learning By Doing}\starfive}
+运行以下代码，观察结果。
+\begin{lstlisting}[style=PythonStyle1, caption=Rectangle]
+x = int(360).__div__(5)
+t1.fd(50)
+t1.rt(x)
+t1.fd(50)
+t1.rt(x)
+t1.fd(50)
+t1.rt(x)
+t1.fd(50)
+t1.rt(x)
+t1.fd(50)
+t1.rt(x)
+print(type(x))
+\end{lstlisting}
+\end{paperbox}
+这段代码中，我们首先创建了一个$int$（整数）类型的对象，参数$360$
+表示这个整数的值是360。
+$__div__$是创建出来的这个对象的一个方法，作用是做除法，返回除法的结果并且
+再赋值给$x$。这样，我们就得到了一个五边形的外角度数。\\
+这段代码看起来很蠢，所以Python为我们提供了便利，写成$x = 360 / 5$就好。\\
+最后我们发现，$x$的类型是一个浮点型$float$。
+\begin{paperbox}{\textbf{Learning By Reading}\starfive}
+阅读材料，了解Python的\href{http://www.runoob.com/python3/python3-basic-operators.html}{运算符}
+以及运算符对应的方法：
+\href{https://segmentfault.com/a/1190000007256392#articleHeader7}{运算符相关的魔术方法}。
+\end{paperbox}
+\subsection{循环}
+画五边形的时候，我们把$t1.fd(50)$和$t1.rt(x)$写了五遍，为了不做重复的机械劳动，
+我们有了循环。\\
+\begin{paperbox}{\textbf{Learning By Doing}\starfive}
+运行以下代码，观察结果。
+\begin{lstlisting}[style=PythonStyle1, caption=Rectangle]
+iter = 0
+while iter != 5:
+    t1.fd(50)
+    t1.rt(x)
+    iter += 1
+\end{lstlisting}
+\end{paperbox}
+这段话也画了一个五边形。
+\begin{paperbox}{\textbf{Learning By Reading}\starfive}
+阅读\href{http://www.runoob.com/python3/python3-loop.html}{材料}，了解while循环的语法和语义。
+\end{paperbox}
+\begin{paperbox}{\textbf{Learning By Doing}\starfive}
+画一个正36边形。思考为什么正36边形长这样。
+\end{paperbox}
+\begin{paperbox}{\textbf{Learning By Doing}\starfive}
+画一个长\href{https://imgsa.baidu.com/exp/w=480/sign=0305f63ebf8f8c54e3d3c4270a282dee/d0c8a786c9177f3ecb5dccdd7bcf3bc79e3d56f0.jpg}{这样}的房子。
+\end{paperbox}
