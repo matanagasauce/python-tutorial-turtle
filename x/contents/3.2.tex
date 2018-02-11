@@ -33,7 +33,7 @@ $__div__$是创建出来的这个对象的一个方法，作用是做除法，�
 以及运算符对应的方法：
 \href{https://segmentfault.com/a/1190000007256392#articleHeader7}{运算符相关的魔术方法}。
 \end{paperbox}
-\subsection{循环}
+\subsection{条件与循环}
 画五边形的时候，我们把$t1.fd(50)$和$t1.rt(x)$写了五遍，为了不做重复的机械劳动，
 我们有了循环。\\
 \begin{paperbox}{\textbf{Learning By Doing}\starfive}
@@ -48,11 +48,34 @@ while iter != 5:
 \end{paperbox}
 这段话也画了一个五边形。
 \begin{paperbox}{\textbf{Learning By Reading}\starfive}
-阅读\href{http://www.runoob.com/python3/python3-loop.html}{材料}，了解while循环的语法和语义。
+阅读材料，了解\href{http://blog.csdn.net/leexide/article/details/17359943}{条件语句}和
+\href{http://www.runoob.com/python3/python3-loop.html}{while循环}的语法和语义。
+\end{paperbox}
+\subsection{关键字}
+保留字（英语：Reserved word），有时也叫关键字（keyword），是编程语言中的一类语法结构。 在特定的编程语言里，这些保留字具有较为特殊的意义，并且在语言的格式说明里被预先定义。
+\footnote{\url{https://zh.wikipedia.org/zh-hans/保留字}}\\
+之前接触到的$import$也是关键字。
+\subsection{定义函数}
+之前的章节中我们使用了一些Python已有的函数，
+这些函数不一定有我们需要的功能，比如，一个画正多边形的函数
+看起来会很好用，但是turtle库中并没有直接提供。
+所以我们需要自己定义函数。
+\begin{paperbox}{\textbf{Learning By Reading}\starfive}
+阅读材料，了解定义函数和匿名函数的语法。\\
+\href{http://www.runoob.com/python3/python3-function.html}{Python3 函数：定义一个函数}\\
+\href{https://www.cnblogs.com/evening/archive/2012/03/29/2423554.html}{lambda 介绍}
 \end{paperbox}
 \begin{paperbox}{\textbf{Learning By Doing}\starfive}
-画一个正36边形。思考为什么正36边形长这样。
+定义函数$polygon(n, x)$，功能为画一个边长为$x$的正$n$边形，并用该函数
+画一个正方形。
 \end{paperbox}
-\begin{paperbox}{\textbf{Learning By Doing}\starfive}
+\begin{paperbox}{\textbf{Learning By Doing}\starfour}
 画一个长\href{https://imgsa.baidu.com/exp/w=480/sign=0305f63ebf8f8c54e3d3c4270a282dee/d0c8a786c9177f3ecb5dccdd7bcf3bc79e3d56f0.jpg}{这样}的房子。
+\end{paperbox}
+函数中可以调用其他函数，也可以调用自己，即递归。\\
+通过递归可以画出一些很炫的分形（Fractal）图案。
+\begin{paperbox}{\textbf{Learning By Doing}\starthree}
+\href{http://www.matrix67.com/blog/archives/6231}{这里}有些分形图形的例子，demo中的fractal.py中也有几个
+函数。选择自己喜欢的图形，试着画出来。\\
+提示：画这样图形的要领是将复杂的图形分解为自身的重复，对自身的重复即可以用递归实现。
 \end{paperbox}

@@ -1,0 +1,52 @@
+\chapter{定义类；迷宫}
+和函数一样，Python中我们也可以定义自己的类。
+\subsection{定义}
+\begin{paperbox}{\textbf{Learning By Reading}\starfive}
+阅读\href{https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431864715651c99511036d884cf1b399e65ae0d27f7e000}{材料}
+，了解如何定义类和类中的属性、方法。\\
+\end{paperbox}
+也就是说，如果有
+\begin{lstlisting}[style=PythonStyle1, caption=Rectangle]
+def function_1(self, x):
+    return self.x + x
+
+class A(object):
+    method_1 = function_1
+
+a = A()
+a.x = 2
+\end{lstlisting}
+这时候，$a.method_1(2)$、$function_1(a, 2)$、$A.method_1(a, 2)$三者是等价的。
+\subsection{装饰器}
+\begin{paperbox}{\textbf{Learning By Reading}\starfive}
+阅读\href{http://www.cnblogs.com/Jerry-Chou/archive/2012/05/23/python-decorator-explain.html}{材料}，了解装饰器。\\
+\end{paperbox}
+简单来说，
+\begin{lstlisting}[style=PythonStyle1, caption=Rectangle]
+@deco
+def func(x):
+    pass
+\end{lstlisting}
+等价于
+\begin{lstlisting}[style=PythonStyle1, caption=Rectangle]
+def func(x):
+    pass
+func = deco(func)
+\end{lstlisting}
+\subsection{类方法}
+\begin{paperbox}{\textbf{Learning By Reading}\starfive}
+阅读材料，了解\href{http://blog.csdn.net/handsomekang/article/details/9615239}{类方法、静态方法}和
+\href{http://python.jobbole.com/80955/}{属性函数}。
+\end{paperbox}
+\begin{paperbox}{\textbf{Learning By Thinking}\starfive}
+$classmethod$、$staticmethod$、$property$都是装饰器，
+想想它们可以怎样实现。
+\end{paperbox}
+\begin{paperbox}{\textbf{Learning By Doing}\startwo}
+试着实现$my_classmethod$、
+$my_staticmethod$、$my_property$。
+\end{paperbox}
+\begin{paperbox}{\textbf{Learning By Doing}\starfive}
+阶段性测试：画一个随机生成的迷宫，把小海龟放在里面，让它自己走出来。\\
+迷宫的生成参考\href{http://maskray.me/blog/2012-11-02-perfect-maze-generation}{这里}。
+\end{paperbox}

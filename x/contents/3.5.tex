@@ -1,0 +1,94 @@
+\chapter{总结（一）}
+\subsection{再谈Python对象}
+\begin{paperbox}{\textbf{Learning By Reading}\starfive}
+观察结果，思考原因。
+\begin{lstlisting}[style=PythonStyle1, caption=Rectangle]
+a = [1, 2]
+b = a
+b += [3]
+print(a)
+\end{lstlisting}
+不知道为什么？看\href{https://www.zhihu.com/question/21000872/answer/16856382}{这里}。
+\end{paperbox}
+\begin{paperbox}{\textbf{Learning By Thinking}\starfive}
+观察结果，思考原因。
+\begin{lstlisting}[style=PythonStyle1, caption=Rectangle]
+a = [1, 2]
+b = a
+b = b + [3]
+print(a)
+\end{lstlisting}
+将程序稍微改写一下或许大家就能看出原因来。$b += [3]$等价于$b.__iadd__([3])$，
+$b = b + [3]$等价于$b = b.__add__([3])$。
+$__iadd__$改变了对象$b$（也就改变了$a$），$__add__$创造了一个新的对象。\\
+试着用上文中画图的形式解释一下这段程序为什么会出现这样的结果。
+\end{paperbox}
+\begin{paperbox}{\textbf{Learning By Reading}\starfive}
+观察结果，思考原因。
+\begin{lstlisting}[style=PythonStyle1, caption=Rectangle]
+a = 2
+b = a
+b += 1
+print(a)
+\end{lstlisting}
+又和想象的不一样？看\href{https://www.jianshu.com/p/c5582e23b26c}{这里}。
+\end{paperbox}
+\subsection{再谈循环}
+在介绍到条件和循环之前，我们见到的程序都是按顺序一行一行执行的，
+条件和循环则不同。\\
+循环有终止条件，也就是说，每次循环都会进行一次条件判断，
+通过条件判断的结果决定下一条执行哪里。
+\begin{lstlisting}[style=PythonStyle1, caption=Rectangle]
+语句1
+语句2
+if 不满足条件 then 跳转到语句5
+语句3
+语句4
+跳转到if
+语句5
+语句6
+\end{lstlisting}
+一个循环的结构可以拆解成上面的模式。在Python中，$if 不满足条件 then 跳转到语句5$和$跳转到if$被
+一个$while 条件$替换了。所以，要实现循环，只需要条件语句，再加上“跳转”指令即可。
+汇编语言中便是这么做的。\\
+一些高级语言，如C++，提供了“跳转”。Python中没有显式的“跳转”，
+因为这些“跳转”通常被诟病降低可读性、容易出错等。
+但Python仍可以实现这样的功能，
+参见\href{http://python.usyiyi.cn/documents/python_352/faq/design.html#yiyi-247}{Python文档}
+（这里用到了尚未介绍的一些Python特性，建议回头再看一遍）。\\
+一些语言中提供了$do-while$循环，
+曾经有人\href{https://www.python.org/dev/peps/pep-0315/}{提议加入}，但被拒绝。
+\href{https://mail.python.org/pipermail/python-ideas/2013-June/021610.html}{这里}是Python官方对Python中没有$do-while$循环的官方解释（英文）。
+\begin{figure}[htbp]
+\centering\includegraphics{http://c.biancheng.net/cpp/uploads/allimg/120129/1-120129205201429.gif}\\
+\caption{$do-while$循环流程图}\label{do.while}
+\end{figure}
+之前提到$break$语句可以跳出循环，有个在许多语言中都有些令人头疼的问题，如何跳出两层循环，
+\href{https://www.zhihu.com/question/37076998}{这里}给出了一些解答。
+\subsection{异常}
+如果让$x = 1 / 0$会怎么样？\\
+\begin{figure}[htbp]
+\centering\includegraphics{https://}\\
+\caption{ZeroDivisionError}\label{do.while}
+\end{figure}
+简单来说，Python会报错并终止当前脚本的运行。
+\begin{paperbox}{\textbf{Learning By Reading}\starfour}
+阅读材料，了解Python\href{http://blog.sciencenet.cn/blog-3031432-1059523.html}{异常处理}和
+\href{http://yuez.me/python-zhong-de-guan-jian-zi-with-xiang-jie/}{with关键字}。
+\end{paperbox}
+\subsection{名称空间}
+当我们使用turtle库中的类时，我们用$turtle.Turtle$。为什么要把库名加上？
+原因很容易想到，因为别的库中也可能有$Turtle$。
+\begin{lstlisting}[style=PythonStyle1, caption=Rectangle]
+def func():
+    y = 1
+	print("函数func：", y)
+y = 3
+func()
+print("函数外：", y)
+\end{lstlisting}
+运行以上代码我们发现，在函数里面对$y$的值进行改变似乎没有影响到函数外$y$的值。
+\begin{paperbox}{\textbf{Learning By Reading}\starfive}
+阅读材料，了解\href{https://segmentfault.com/a/1190000004519811}{Python的命名空间}。
+\end{paperbox}
+\subsection{代码风格}
