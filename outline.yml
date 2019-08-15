@@ -1,6 +1,6 @@
 Python:
   - 工作坊目标和特点:
-    - 让没有变成基础的人掌握Python3的语法，对计算机程序如何运行有初步、抽象的认识
+    - 让编程0基础的人掌握Python3的基本语法，对计算机程序如何运行有初步、抽象的认识，为将来进一步学习
   - 预备知识:
     - 什么是计算机程序:
       - 长什么样:
@@ -22,7 +22,9 @@ Python:
       - 编译与解释
       - 高级语言高级在哪里
   - 准备工作:
-    - 安装python3解释器
+    - 安装python3解释器（找个其他教程的安装方法?)
+      - Mac
+      - Windows
     - 安装pip
     - 选择一款ide并安装
   - Start:
@@ -52,7 +54,7 @@ Python:
       - help()
       - Python的“一切都是对象”与面向对象语言
       - learning by reading:
-        - 面向对象vs面向过程，https://stackoverflow.com/questions/2078978/functional-programming-vs-object-oriented-programming
+        - 面向对象vs面向过程，https://stackoverflow.com/questions/2078978/functional-programming-vs-object-oriented-programming  （要不要再提供一个中文的阅读材料呢？）
       - learning by doing:
         - 创建多个海龟并让他们叠罗汉
       - learning by thinking:
